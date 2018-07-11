@@ -1,0 +1,42 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: elasticsearch
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url:
+    username:
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 15
+server:
+  port: 8888
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: me.leiho.elasticsearch.entity
+  global-config:
+    id-type: 3
+    field-strategy: 2
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: false
+    key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    meta-object-handler: me.leiho.elasticsearch.handler.MPMetaObjectHandler
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+elasticsearch:
+  url:
+  port:
+  scheme:
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file: logs/es.log
+  level: info
